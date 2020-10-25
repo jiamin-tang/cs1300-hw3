@@ -1,14 +1,138 @@
-<!doctype html>
-
-<html>
+<html lang="en">
   <head>
-    <title>INSERT TITLE HERE!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+    <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="index.css">
-    <!-- TODO: add additional links here! e.g. fonts, icons, more stylesheets, etc. -->
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <script src="bootstrap.bundle.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/90f50068f8.js" crossorigin="anonymous"></script>
+    
+    <title>AB Testing</title>
   </head>
-
+  
   <body>
-    <!-- TODO: put your HTML code here! -->
+
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#206a5d;">
+      <div class="container">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navdemo">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navdemo">
+          <ul class="navbar-nav nav nav-fill w-100">
+            <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+            <li class="nav-item active"><a class="nav-link" href="#statisticaltests">Statistical Tests</a></li>
+            <li class="nav-item"><a class="nav-link" href="#datacollection">Data Collection</a></li>
+            <li class="nav-item"><a class="nav-link" href="#conclusions">Conclusions</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav> 
+
+
+    <div class="main">
+      <div class="d-flex flex-column justify-content-center align-items-center top-pane">
+        <h0>A/B Testing</h0>
+      </div>
+
+      <div id="overview" class="container-fluid">
+        <h1>Overview</h1>
+        <h2>
+          <p>This project is aimed at performing an A/B test and statistical analysis to gather insight into two different UI designs of an online cactus shop
+            <a style="color: black; font-weight: bold;" href="https://serene-chamber-04380.herokuapp.com/">website.</a>
+          </p>
+        </h2>
+        
+        <div class="container">
+          <div class="row text-center justify-content-center">
+            <div class="col-6">
+              <img class="img-fluid" src="images/websiteA.png" alt="website version A">
+              <h3>Version A</h3>
+            </div>
+            <div class="col-6">
+              <img class="img-fluid" src="images/websiteB.png" alt="website version B">
+              <h3>Version B</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="statisticaltests" class="container-fluid">
+        <h1>Statistical Tests</h1>
+        <h2>
+          I will run statistical tests for two metrics: Time to Completion and Return Rate. For each metric, 
+          I will have a set of hypotheses (null and alternative hypotheses) and reasoning behind the alternative hypotheses.
+        </h2>
+
+        <h5>Time to Completion</h5>
+        <h2>
+          Time to Completion refers to the time it takes to complete the desired task (in this case, order cacti). 
+          I will perform a t-test for the difference of means.
+        </h2>
+
+        <h2><strong>Null hypothesis: </strong>Interface B is no better than interface A in reducing users’ time to completion.</h2>
+        <h2><strong>Alternative hypothesis: </strong>Interface B takes users’ less time to complete the order than interface A.</h2>
+        <h2>The reasoning behind the alternative hypothesis is that the layout of interface B, including the emphasized title, 
+          differentiation of font size and centered items make the hierarchy of the online shop, which is more user-friendly. 
+          Hopefully it would make users more comfortable to add items to cart without moving eyes to the far left, which may lead to less time for ordering.
+        </h2>
+
+        <h5>Return Rate</h5>
+        <h2>
+          Return Rate refers to the number of times a user returned to the page. Since this is a categorical feature (return or not), 
+          I will perform chi^2-test for homogeneity.
+        </h2>
+
+        <h2><strong>Null hypothesis: </strong>Interface B is no better than interface A in reducing users’ return rate.</h2>
+        <h2><strong>Alternative hypothesis: </strong>Interface B has a lower return rate than interface A.</h2>
+        <h2>The reasoning behind the alternative hypothesis is that the layout of interface B, especially keeping everything centered, 
+          makes it more affordable and understandable for users’ ordering behaviours. In this case, they will not be back to the page to check once they finish ordering.
+        </h2>
+
+      </div>
+
+      <div id="datacollection" class="container-fluid">
+        <h1>Data Collection</h1>
+        <h2>
+          For the A/B test, I collected data from about 24 user sessions, both from my peers during the studio and friends outside of the class. 
+          The URL is designed to open version A 50% of the time, and version B the other 50%. The task is to fill the cart with at least $150 of cacti/succulents. 
+        </h2>
+        <h2>
+          After extracting the logs and cleaning the data, I ran the data with Python scripts to perform a t-test and a chi^2-test.
+        </h2>
+      </div>
+
+      <div id="conclusions" class="container-fluid">
+        <h1>Conclusions</h1>
+        <h2>The infographic below shows the results and conclusions from each statistical test.</h2>
+        <div class="container">
+          <div class="row text-center justify-content-center">
+            <img class="img-fluid" src="images/infographic.png" alt="AB Testing Infographic">
+          </div>
+          <h3>Infographic of A/B Testing</h3>
+        </div>
+
+        <h2>The broad takeaways on general A/B testing after walking through this simple experiment are:</h2>
+        <ul style="font-size:20px;">
+          <li>Both results fail to reject the null hypothesis, which may be different from intuition. 
+            The limitation of this test is that the sample size is too small and most of the population is my peers who are 
+            familiar with the cactus shop. In this case, the result may be biased.</li>
+          <li>The two layouts do make some differences if we simply look at the average time spent on completing the task, 
+            although it is not statistically significant. I am a little bit hesitant to draw the conclusion that visual design, 
+            including hierarchy and layout do contribute to the affordance of the design. I believe things will be clear with more comprehensive sample data</li>
+        </ul>
+      </div>
+
+    </div> 
+
+    <footer class="py-3" style="background-color: #206a5d;">
+      <div class="container text-center">
+          <p class="mb-0">© 2020</a><br>
+      </div>
+    </footer>
+    
+  
   </body>
+  
 </html>
